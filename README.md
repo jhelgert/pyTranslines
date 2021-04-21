@@ -8,7 +8,7 @@ two controls inside the network:
 
 - A so-called *outer control* to disable single lines inside the network
 (or whole subgrids) at an arbitrary point in time.
-- And an so-called *inflow control* that determines the power inflow into
+- And a so-called *inflow control* that determines the power inflow into
 the network at the source vertices.
 
 
