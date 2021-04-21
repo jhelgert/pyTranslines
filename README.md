@@ -11,6 +11,16 @@ two controls inside the network:
 - And a so-called *inflow control* that determines the power inflow into
 the network at the source vertices.
 
+The goal is to
+minimize the sum of quadratic deviation between the given demand and the
+delivered load to the consumers during a time interval `[0, T]`.
+
+The packages uses a *first descritize, then optimize* ansatz to transform
+the infinite dimensional optimization problem on function spaces into a
+finite dimensional optimization problem. More precisely, the packages
+solves a mixed-integer quadratically constrained quadratic program (MIQCQP)
+by Gurobi. Additionally, it contains a specialized heuristic coupled
+with Gurobi and based on the CIAP decomposition to quickly generate feasible solutions. Especially for large problems the latter gives a significantly speed up.
 
 ## Install
 
