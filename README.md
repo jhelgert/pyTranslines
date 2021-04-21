@@ -1,9 +1,28 @@
 
 # pyTranslines
 
-...
+This is a python package to control networks of electrical transmission
+lines. The dynamics on the lines are described by the telegrapher equations,
+a 2x2 system of PDEs from the class of hyperbolic balance laws. There are
+two controls inside the network
+
+- A so-called *outer control* that can disable single lines inside the network
+(or whole subgrids) at an arbitrary point in time.
+- And an so-called *inflow control*, that determines the power inflow into
+the network at the source vertices.
 
 ## Example
+
+![](https://i.imgur.com/w7pE1iS.png)
+
+Here, `u0` and `u1` are inflow controls at the source vertices 0 and 1 and
+`Q9, Q10, Q11, Q12, Q13` are given demand functions at the sink (consumer)
+vertices 9,10,11,12,13. The network contains two switches `s1` and `s2`
+to disable lines (or a whole subgrid) inside the network. 
+
+The goal is to
+minimize the sum of quadratic deviation between the demand and the
+delivered load to the consumers during a time interval `[0, T]`.
 
 ``` python
 from pyTranslines import Translines
@@ -13,7 +32,7 @@ V = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 # Arcs
 A = [(0, 2), (1, 3), (3, 5), (2, 4), (2, 8), (4, 6), (5, 6),
      (6, 7), (8, 7), (2, 9), (8, 10), (3, 11), (7, 12), (7, 13)]
-# producer / source vertices 
+# producer / source vertices
 producers = [0, 1]
 # consumer / sink vertices
 consumers = [9, 10, 11, 12, 13]
