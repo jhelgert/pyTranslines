@@ -4,12 +4,21 @@
 This is a python package to control networks of electrical transmission
 lines. The dynamics on the lines are described by the telegrapher equations,
 a 2x2 system of PDEs from the class of hyperbolic balance laws. There are
-two controls inside the network
+two controls inside the network:
 
-- A so-called *outer control* that can disable single lines inside the network
+- A so-called *outer control* to disable single lines inside the network
 (or whole subgrids) at an arbitrary point in time.
-- And an so-called *inflow control*, that determines the power inflow into
+- And an so-called *inflow control* that determines the power inflow into
 the network at the source vertices.
+
+
+## Install
+
+Clone this repo and run
+``` bash
+python3 setup.py install
+```
+inside the repo folder.
 
 ## Example
 
