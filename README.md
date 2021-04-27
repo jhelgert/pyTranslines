@@ -24,7 +24,7 @@ with Gurobi and based on the CIAP decomposition to quickly generate feasible sol
 
 ## Install
 
-Clone this repo and run
+First install [pyCIAP](https://github.com/jhelgert/pyCIAP). Then, clone this repo and run
 ``` bash
 python3 setup.py install
 ```
