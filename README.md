@@ -47,18 +47,23 @@ delivered load to the consumers during a time interval `[0, T]`.
 ``` python
 from pyTranslines import Translines
 
-# Vertices
+# vertices
 V = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-# Arcs
+
+# arcs
 A = [(0, 2), (1, 3), (3, 5), (2, 4), (2, 8), (4, 6), (5, 6),
      (6, 7), (8, 7), (2, 9), (8, 10), (3, 11), (7, 12), (7, 13)]
+
 # producer / source vertices
 producers = [0, 1]
+
 # consumer / sink vertices
 consumers = [9, 10, 11, 12, 13]
+
 # Each config contains the disabled lines if the config is active.
 # Example: 2 corresponds to the line A[2] = (3, 5)
 configs = [(), (2, 3, 7), (8,), (2, 3, 7, 8)]
+
 # Given consumer demand
 demand = np.loadtxt('demand_dt_0_5.dat')
 
