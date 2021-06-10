@@ -1,6 +1,8 @@
 
 # pyTranslines
 
+![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/jhelgert/pyTranslines/master)
+
 This is a python package to control networks of electrical transmission
 lines. The dynamics on the lines are described by the telegrapher equations,
 a 2x2 system of PDEs from the class of hyperbolic balance laws. There are
