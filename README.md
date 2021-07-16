@@ -21,9 +21,10 @@ The packages uses a *first discretize, then optimize* ansatz to transform
 the infinite dimensional optimization problem on function spaces into a
 finite dimensional optimization problem. More precisely, the package
 solves a mixed-integer quadratically constrained quadratic program (MIQCQP)
-by Gurobi. Additionally, it contains a specialized heuristic coupled
-with Gurobi and based on the CIAP decomposition to quickly generate feasible solutions. 
-In particular for large problems the latter gives a significantly speed up.
+by Gurobi. 
+
+Additionally, it contains a specialized heuristic based on the CIAP decomposition to quickly find feasible solutions. This heuristic
+yields promising results for huge problem instances.
 
 ## Install
 
@@ -90,7 +91,8 @@ T = 10
 # Create our discretized control problem
 Prob = Translines(V, A, producers, consumers, configs, demand)
 
-# T time horizon, lr length of all network arcs, L, C, R, G physical parameters
+# T time horizon, lr length of all network arcs, 
+# L, C, R, G physical parameters for all transmission lines 
 Prob.set_parameters(T=T, lr=1.0, L=1.0, C=1.0, R=1.0e-3, G=2.0e-3)
 
 # discretization step sizes
@@ -99,22 +101,17 @@ Prob.set_step_sizes(dt=0.5, dx=0.5)
 # upper bounds for the power inflow at the source vertices
 Prob.set_inflow_UB([120, 80])
 
-# Set the configuration dwell times (as number of time steps, i.e. multiple of dt)
+# Set the configuration dwell times (as number of time steps)
 # for all configurations: 3 / dt = 3 / 0.5 = 1.5
 Prob.set_min_dwell_times(min_up=3, min_down=3)
-
-# Set the transmission disturbances on a specific line
-Prob.set_disturbed_lines([13], [20.0], [500*(T/0.5 + 1)])
 
 # bigM constraint used for linearizing the coupling conditions
 Prob.set_BigM(150.0)
 
-# Solve via Gurobi
+# Solve via Gurobi, use solver="GurobiCIAP" for the specialized heuristic
 Prob.solve(solver="Gurobi")
 
-# Solve via the specialized heuristic
-# Prob.solve(solver="GurobiCIAP")
-
 Prob.plot_results()
-
 ```
+
+Note that the objective function is scaled with factor 1/10 for numerical reasons.
