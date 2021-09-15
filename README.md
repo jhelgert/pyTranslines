@@ -16,6 +16,9 @@ a single line.
 - And a so-called *inflow control* that determines the power inflow into
 the network at the source vertices.
 
+Additionally, there are configuration dwell-time constraints to prevent
+a rapidly switching of the switch states.
+
 The goal is to
 minimize the sum of quadratic deviation between the given demand and the
 delivered load to the consumers during a time interval `[0, T]`.
