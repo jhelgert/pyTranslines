@@ -8,8 +8,11 @@ lines. The dynamics on the lines are described by the telegrapher equations,
 a 2x2 system of PDEs from the class of hyperbolic balance laws. There are
 two controls inside the network:
 
-- A so-called *outer control* to disable single lines inside the network
-(or whole subgrids) at an arbitrary point in time.
+- A so-called *outer control* to activate or deactivate switches inside
+the network and thereby disable single lines inside the network
+(or whole subgrids) at an arbitrary point in time. The outer control is
+determined by a configuration of the switch states which disable or activate
+a single line.
 - And a so-called *inflow control* that determines the power inflow into
 the network at the source vertices.
 
@@ -23,12 +26,14 @@ finite dimensional optimization problem. More precisely, the package
 solves a mixed-integer quadratically constrained quadratic program (MIQCQP)
 by Gurobi. 
 
-Additionally, it contains a specialized heuristic based on the CIAP decomposition to quickly find feasible solutions. This heuristic
-yields promising results for huge problem instances.
+Additionally, it contains a specialized heuristic based on the CIAP decomposition 
+to quickly find feasible solutions. This heuristic yields promising results for 
+huge problem instances.
 
 ## Install
 
-First install [pyCIAP](https://github.com/jhelgert/pyCIAP). Then, clone this repo and run
+First install [pyCIAP](https://github.com/jhelgert/pyCIAP). Then, clone this repo 
+and run
 ``` bash
 python3 setup.py install
 ```
@@ -105,7 +110,7 @@ Prob.set_inflow_UB([120, 80])
 # for all configurations: 3 / dt = 3 / 0.5 = 1.5
 Prob.set_min_dwell_times(min_up=3, min_down=3)
 
-# bigM constraint used for linearizing the coupling conditions
+# bigM constant used for linearizing the coupling conditions
 Prob.set_BigM(150.0)
 
 # Solve via Gurobi, use solver="GurobiCIAP" for the specialized heuristic
