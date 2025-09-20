@@ -21,7 +21,7 @@ a rapidly switching of the switch states.
 
 The goal is to
 minimize the sum of quadratic deviation between the given demand and the
-delivered load to the consumers during a time interval `[0, T]`.
+delivered load to the consumers during a time interval $[0, T]$.
 
 The packages uses a *first discretize, then optimize* ansatz to transform
 the infinite dimensional optimization problem on function spaces into a
@@ -35,7 +35,8 @@ huge problem instances.
 
 ## Install
 
-First install [pyCIAP](https://github.com/jhelgert/pyCIAP). Then, clone this repo 
+First install [pyCIAP](https://github.com/jhelgert/pyCIAP). Otherwise, clone this repo 
+
 and run
 ``` bash
 python3 setup.py install
@@ -44,16 +45,19 @@ inside the repo folder.
 
 ## Example
 
-![](https://i.imgur.com/w7pE1iS.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/2xoFrYM.png">
+  <source media="(prefers-color-scheme: light)" srcset="[light-mode-image.png](https://i.imgur.com/l1XxVD6.png)">
+  <img alt="Fallback image description" src="https://i.imgur.com/l1XxVD6.png">
+</picture>
 
-Here, `u0` and `u1` are inflow controls at the source vertices 0 and 1 and
-`Q9, Q10, Q11, Q12, Q13` are given demand functions at the sink (consumer)
-vertices 9,10,11,12,13. The network contains two switches `s1` and `s2`
-to disable lines (or a whole subgrid) inside the network. 
+Here, $u_0$ and $u_1$ are inflow controls at the source vertices 0 and 1 and
+$Q_9, Q_{10}, Q_{11}, Q_{12}, Q_{13}$ are given demand functions at the sink (consumer)
+vertices 9,10,11,12,13. The network contains two switches $s_1$ and $s_2$
+to deactivate lines (or even a whole subgrid) inside the network. 
 
-The goal is to
-minimize the sum of quadratic deviation between the demand and the
-delivered load to the consumers during a time interval `[0, T]`.
+The goal is to minimize the sum of quadratic deviation between the demand and the
+delivered load to the consumers during a time interval $[0, T]$.
 
 ``` python
 from pyTranslines import Translines
